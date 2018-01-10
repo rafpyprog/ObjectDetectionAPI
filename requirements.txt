@@ -1,0 +1,8 @@
+bs4
+pillow
+lxml
+jupyter
+matplotlib
+pandas
+requests
+tensorflow
