@@ -24,7 +24,7 @@ sudo pip3 install -r requirements.txt
 
 
 echo -e $SCRIPT "Cloning Tensorflow Models repository."
-#git clone https://github.com/tensorflow/models.git
+git clone https://github.com/tensorflow/models.git
 
 
 echo -e $SCRIPT "Compiling protocol buffers."
@@ -39,7 +39,8 @@ export PYTHONPATH="$PYTHONPATH:`pwd`:`pwd`/slim" && \
 
 
 echo -e $SCRIPT "Installing labeled data."
-mv ./images ./models/research/object_detection/
+mkdir  ./models/research/object_detection/images/
+cp -a ./images/. ./models/research/object_detection/images/
 
 
 echo -e $SCRIPT "Installing suport scripts."
@@ -69,6 +70,6 @@ tar -xzf model.tar.gz -C model --strip-components 1
 
 
 echo -e $SCRIPT "Moving config file."
-#mkdir training
+mkdir training
 cp ./samples/configs/ssd_mobilenet_v1_pets.config ./training/$CONFIGURATION_FILE
 python3 config.py $CONFIGURATION_FILE
